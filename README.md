@@ -12,9 +12,9 @@ The goal is to accurately classify transactions as **Normal (0)** or **Fraud (1)
 ---
 
 ## Dataset
-- Source: [Kaggle Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)
-- Features: 30 anonymized numerical features (`V1`–`V28`, `Time`, `Amount`) and a target class `Class` (0 = Normal, 1 = Fraud)
-- No missing values in the dataset.
+- **Source:** [Kaggle Credit Card Fraud Detection Dataset](https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud)  
+- **Features:** 30 anonymized numerical features (`V1`–`V28`, `Time`, `Amount`) and a target class `Class` (0 = Normal, 1 = Fraud)  
+- **Missing Values:** None
 
 ---
 
@@ -40,32 +40,19 @@ The goal is to accurately classify transactions as **Normal (0)** or **Fraud (1)
   - Logistic Regression
 
 ### 5. Evaluation Metrics
-- **Accuracy** – Overall correctness
-- **Precision** – Correctly predicted fraud out of all predicted fraud
-- **Recall** – Correctly predicted fraud out of all actual fraud
-- **F1 Score** – Harmonic mean of precision and recall
-- **Confusion Matrix** – Visual representation of correct and incorrect predictions
+- **Accuracy:** Overall correctness  
+- **Precision:** Correctly predicted fraud out of all predicted fraud  
+- **Recall:** Correctly predicted fraud out of all actual fraud  
+- **F1 Score:** Harmonic mean of precision and recall  
+- **Confusion Matrix:** Visual representation of correct and incorrect predictions
 
 ---
 
-## Installation
-
-```bash
-# Clone the repository
-git clone <your-repo-link>
-
-# Install dependencies
-pip install -r requirements.txt
-
----
-
----
 ## Model Performance
-
 ### Results Table
 
 | Model | Sampling Method | Accuracy | Precision | Recall | F1 Score |
-|-------|----------------|---------|----------|-------|----------|
+|---|---|---|---|---|---|
 | Decision Tree | Original | 0.9990 | 0.6633 | 0.7222 | 0.6915 |
 | Decision Tree | Downsampled | 0.9105 | 0.9381 | 0.8922 | 0.9146 |
 | Decision Tree | SMOTE Oversampled | 0.9983 | 0.9976 | 0.9990 | 0.9983 |
@@ -76,13 +63,19 @@ pip install -r requirements.txt
 | Random Forest | Downsampled | 0.9368 | 0.9891 | 0.8922 | 0.9381 |
 | Random Forest | SMOTE Oversampled | 0.9903 | 0.9984 | 0.9823 | 0.9903 |
 
-### Observations
-- Original data models show extremely high accuracy (~0.999) but poor recall in some cases (e.g., Logistic Regression recall = 0.5667), indicating class imbalance affects fraud detection.
-- Downsampled models slightly reduce accuracy but improve recall and F1 scores (e.g., Decision Tree F1 = 0.9146), providing better class balance.
-- SMOTE oversampling gives the best overall performance, with very high precision and recall (e.g., Decision Tree F1 = 0.9983, Random Forest F1 = 0.9903).
-- Random Forest consistently outperforms other models in F1 score across datasets, showing strong ability to detect complex fraud patterns.
+---
 
-### Conclusion
-- Accuracy alone can be misleading in imbalanced datasets; recall and F1 score are key metrics for fraud detection.
-- SMOTE oversampling effectively balances classes, achieving near-perfect detection with high precision and recall.
-- Random Forest with SMOTE is the most effective model, achieving an F1 score of 0.9903, making it highly reliable for detecting fraudulent transactions.
+## Observations
+
+* Original data models show extremely high accuracy (~0.999) but poor recall in some cases (e.g., Logistic Regression recall = 0.5667), indicating class imbalance affects fraud detection.
+* Downsampled models slightly reduce accuracy but improve recall and F1 scores (e.g., Decision Tree F1 = 0.9146), providing better class balance.
+* SMOTE oversampling gives the best overall performance, with very high precision and recall (e.g., Decision Tree F1 = 0.9983, Random Forest F1 = 0.9903).
+* Random Forest consistently outperforms other models in F1 score across datasets, showing strong ability to detect complex fraud patterns.
+
+---
+
+## Conclusion
+
+* Accuracy alone can be misleading in imbalanced datasets; recall and F1 score are key metrics for fraud detection.
+* SMOTE oversampling effectively balances classes, achieving near-perfect detection with high precision and recall.
+* Random Forest with SMOTE is the most effective model, achieving an F1 score of 0.9903, making it highly reliable for detecting fraudulent transactions.
