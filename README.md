@@ -59,25 +59,29 @@ pip install -r requirements.txt
 
 ---
 
-## Results
+## Model Performance
 
-Confusion Matrices:
-1. Decision Tree:
-<img width="518" height="516" alt="image" src="https://github.com/user-attachments/assets/806058b0-08bc-4aba-ba92-ce21294c1974" />
-<img width="515" height="489" alt="image" src="https://github.com/user-attachments/assets/00ff950b-c70d-434b-ae7b-58067c813024" />
-<img width="573" height="498" alt="image" src="https://github.com/user-attachments/assets/f697bb1a-5f0a-4f7f-b19f-0754db91f885" />
-2. RandomForest:
-<img width="569" height="489" alt="image" src="https://github.com/user-attachments/assets/c45cf266-e680-48ec-8acc-675535799d9b" />
-<img width="471" height="499" alt="image" src="https://github.com/user-attachments/assets/b7a77d58-ead8-4cfa-858d-e496ce3191c0" />
+### Results Table
 
+| Model | Sampling Method | Accuracy | Precision | Recall | F1 Score |
+|-------|----------------|---------|----------|-------|----------|
+| Decision Tree | Original | 0.9990 | 0.6633 | 0.7222 | 0.6915 |
+| Decision Tree | Downsampled | 0.9105 | 0.9381 | 0.8922 | 0.9146 |
+| Decision Tree | SMOTE Oversampled | 0.9983 | 0.9976 | 0.9990 | 0.9983 |
+| Logistic Regression | Original | 0.9992 | 0.8947 | 0.5667 | 0.6939 |
+| Logistic Regression | Downsampled | 0.9316 | 0.9588 | 0.9118 | 0.9347 |
+| Logistic Regression | SMOTE Oversampled | 0.9457 | 0.9727 | 0.9175 | 0.9443 |
+| Random Forest | Original | 0.9995 | 0.9697 | 0.7111 | 0.8205 |
+| Random Forest | Downsampled | 0.9368 | 0.9891 | 0.8922 | 0.9381 |
+| Random Forest | SMOTE Oversampled | 0.9903 | 0.9984 | 0.9823 | 0.9903 |
 
-3. Logistic Regression:
+### Observations
+- Original data models show extremely high accuracy (~0.999) but poor recall in some cases (e.g., Logistic Regression recall = 0.5667), indicating class imbalance affects fraud detection.
+- Downsampled models slightly reduce accuracy but improve recall and F1 scores (e.g., Decision Tree F1 = 0.9146), providing better class balance.
+- SMOTE oversampling gives the best overall performance, with very high precision and recall (e.g., Decision Tree F1 = 0.9983, Random Forest F1 = 0.9903).
+- Random Forest consistently outperforms other models in F1 score across datasets, showing strong ability to detect complex fraud patterns.
 
-
-
-
-
----
-
-## Observations & Conclusions
-
+### Conclusion
+- Accuracy alone can be misleading in imbalanced datasets; recall and F1 score are key metrics for fraud detection.
+- SMOTE oversampling effectively balances classes, achieving near-perfect detection with high precision and recall.
+- Random Forest with SMOTE is the most effective model, achieving an F1 score of 0.9903, making it highly reliable for detecting fraudulent transactions.
